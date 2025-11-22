@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3>Sobre o projeto</h3>
+      <p>
+        O projeto <strong>{{ nome|capitalize }}</strong> é uma iniciativa artística que utiliza materiais reciclados para criar esculturas e instalações. Ele promove a conscientização ambiental e a valorização da arte sustentável.
+      </p>
+
+{% endblock %}

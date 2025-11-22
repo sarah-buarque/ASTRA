@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="bg-dark">
+    <section class="principal">
+    <h1>ASTRA</h1>
+    <p>Ambiente de Saberes e Transmissão de Resultados Acadêmicos</p>
+</section>
+
+<section class="cards">
+
+    <div class="card yellow">
+        <h3>Transparência</h3>
+        <p>Atuamos com clareza e ética em todas as ações de divulgação.</p>
+    </div>
+
+    <div class="card purple">
+        <h3>Colaboração</h3>
+        <p>Promover o trabalho conjunto entre projetos, instituições e pessoas.</p>
+    </div>
+
+    <div class="card purple">
+        <h3>Transformação</h3>
+        <p>Acreditamos no poder da visibilidade para gerar evolução e oportunidades.</p>
+    </div>
+</section>
+
+</section>
+
+<section class="bg-light">
+ <section class="projetos">
+  <h2 class="center">Conheça os projetos</h2>
+  <div class="carousel-container">
+    <div class="carousel">
+      <div class="projeto-card">
+        <img src="{{url_for('static', filename='img/nuarte.jpg')}}" alt="Nuarte">
+        <h3>Nuarte</h3>
+        <p>Estou trabalhando em um projeto de arte com reciclagem! Vai ser uma instalação cheia de esculturas feitas com materiais.</p>
+        <a href="{{url_for('projeto', nome='nuarte')}}">Saiba mais</a>
+      </div>
+      <div class="projeto-card">
+        <img src="{{url_for('static', filename='img/semeando.jpg')}}" alt="Semeando Crônicas">
+        <h3>Semeando Crônicas</h3>
+        <p>Estou trabalhando em um projeto de arte com reciclagem! Vai ser uma instalação cheia de esculturas feitas com materiais.</p>
+        <a href="{{url_for('projeto', nome='semeando')}}">Saiba mais</a>
+      </div>
+      <div class="projeto-card">
+        <img src="{{url_for('static', filename='img/ada.jpg')}}" alt="ADA">
+        <h3>ADA</h3>
+        <p>Estou trabalhando em um projeto de arte com reciclagem! Vai ser uma instalação cheia de esculturas feitas com materiais.</p>
+        <a href="{{url_for('projeto', nome='ada')}}">Saiba mais</a>
+      </div>
+    </div>
+  </div>
+  <a class="ver-mais" href="{{url_for('projetos')}}">Ver mais</a>
+ </section>
+</section>
+
+{% endblock %}

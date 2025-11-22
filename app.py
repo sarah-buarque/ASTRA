@@ -3,6 +3,18 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 app = Flask(__name__)
 app.secret_key = "segredo123"
 
+@app.route("/")
+def home():
+    return render_template("home.html")
+
+@app.route("/contato")
+def contato():
+    return render_template("contato.html")
+
+@app.route("/sobre")
+def sobre():
+    return render_template("sobre.html")
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -28,6 +40,13 @@ def recuperar_senha():
 def cadastro():
     return "<h2>Página de cadastro</h2>"
 
+@app.route('/projetos')
+def projetos():
+    return render_template('projetos.html')
+
+@app.route('/projeto/<nome>')
+def projeto(nome):
+    return render_template('projeto_detalhe.html', nome=nome)
 
 if __name__ == "__main__":
     app.run(debug=True)
