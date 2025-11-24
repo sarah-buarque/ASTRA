@@ -90,11 +90,9 @@ button {
     font-size: 13px;
 }
 
-/* PARTE DIREITA - IMAGEM */
 .right {
     width: 50%;
-    background-color: #14162E;
-    background-image: url('/static/img/.jpg');
+    background-image: url('../img/ceu.svg');
     background-size: cover;
     background-position: center;
     display: flex;              

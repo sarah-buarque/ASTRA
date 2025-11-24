@@ -2,7 +2,7 @@ body {
     min-height: 100vh;
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: black;
+    background-image: url(../img/Cadastro.svg);
     background-size: cover;
 }
 

@@ -3,10 +3,21 @@
 
 <style>
     body {
-        background-color: black;
+        background-image: url("{{ url_for('static', filename='img/Cadastro.svg') }}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 </style>
 
 <h1>Conheça os projetos</h1>
+
+<div class="galeria">  
+  {% for item in projetos %}
+    <div class="card">
+      <p>{{ item.nome }}</p>
+    </div>
+  {% endfor %}
+</div>
 
 {% endblock %}

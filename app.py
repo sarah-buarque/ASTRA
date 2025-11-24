@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 app = Flask(__name__)
-app.secret_key = "segredo123"
 
 @app.route("/")
 def home():
@@ -24,19 +23,21 @@ def login():
         if usuario == "admin" and senha == "123":
             return "Login realizado com sucesso!"
 
-        flash("Usuário ou senha incorretos!")
-        return redirect(url_for("login"))
-
     return render_template("login.html")
-
 
 @app.route("/recuperar-senha")
 def recuperar_senha():
     return render_template("recuperarsenha.html")
 
-@app.route('/projetos')
+@app.route("/projetos")
 def projetos():
-    return render_template('projetos.html')
+    lista_projetos = [
+        {"nome": "PISEW - Integrando Crianças Warao"},
+        {"nome": "IFTech - Feira de Tecnologia"},
+        {"nome": "Robótica ZN"},
+        {"nome": "ASTRA - Ambiente de Saberes e Transmissão de Resultados Acadêmicoos"}
+    ]
+    return render_template("projetos.html", projetos=lista_projetos)
 
 @app.route('/projeto/<nome>')
 def projeto(nome):

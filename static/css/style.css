@@ -5,14 +5,9 @@
 }
 
 body {
+    background-image: url(../img/Cadastro.svg);
     background-size: cover;
-    color: white;
-}
-
-.bg-dark {
-  background-color: black;
-  color: white;
-  padding: 60px 0;
+    color: white
 }
 
 .navbar {
@@ -28,6 +23,10 @@ body {
     text-decoration: none;
     color: white;
     font-weight: 500;
+}
+
+.navbar img{
+  width: 120px;
 }
 
 .btn-login {
@@ -78,7 +77,7 @@ body {
 
 .yellow {
     background: #D9AE4B;
-    color: #222;
+    color: white;
     transition: box-shadow 0.1s ease; 
 }
 
@@ -111,6 +110,7 @@ body {
 .projetos {
   margin: 100px auto;
   padding: 0 40px;
+  font-family: "Montserrat", sans-serif;
 }
 
 .carousel-container {
@@ -139,7 +139,6 @@ body {
 }
 
 .projeto-card img {
-  width: 100%;
   border-radius: 12px;
   margin-bottom: 15px;
 }
@@ -171,4 +170,3 @@ body {
   color: #D9AE4B;
   text-decoration: none;
 }
-

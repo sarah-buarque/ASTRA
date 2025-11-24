@@ -1,34 +1,36 @@
 {% extends "base.html" %}
 {% block content %}
 
-<section class="bg-dark">
-    <section class="principal">
+  <section class="principal">
     <h1>ASTRA</h1>
     <p>Ambiente de Saberes e Transmissão de Resultados Acadêmicos</p>
-</section>
+  </section>
 
-<section class="cards">
+  <section class="cards">
 
     <div class="card yellow">
+      <img src="{{url_for('static', filename='img/icon1.svg')}}">
         <h3>Transparência</h3>
-        <p>Atuamos com clareza e ética em todas as ações de divulgação.</p>
+          <p>Atuamos com clareza e ética em todas as ações de divulgação.</p>
     </div>
 
     <div class="card purple">
-        <h3>Colaboração</h3>
-        <p>Promover o trabalho conjunto entre projetos, instituições e pessoas.</p>
+      <img src="{{url_for('static', filename='img/icon2.svg')}}">
+      <h3>Colaboração</h3>
+      <p>Promover o trabalho conjunto entre projetos, instituições e pessoas.</p>
     </div>
 
     <div class="card purple">
-        <h3>Transformação</h3>
-        <p>Acreditamos no poder da visibilidade para gerar evolução e oportunidades.</p>
+      <img src="{{url_for('static', filename='img/icon2.svg')}}">
+      <h3>Transformação</h3>
+      <p>Acreditamos no poder da visibilidade para gerar evolução e oportunidades.</p>
     </div>
-</section>
+  </section>
 
 </section>
 
 <section class="bg-light">
- <section class="projetos">
+  <section class="projetos">
   <h2 class="center">Conheça os projetos</h2>
   <div class="carousel-container">
     <div class="carousel">
