@@ -5,11 +5,12 @@ from werkzeug.utils import secure_filename
 from werkzeug.security import generate_password_hash, check_password_hash
 from utils import db
 import os
+
 from flask_migrate import Migrate
 from models import Usuario, Projeto
 
+
 app = Flask(__name__)
-app.secret_key = "astra"
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 db_usuario = os.getenv('DB_USERNAME')
 db_senha = os.getenv('DB_PASSWORD')
@@ -20,6 +21,7 @@ db_port = os.getenv('DB_PORT')
 conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}:{db_port}/{db_mydb}"
 app.config['SQLALCHEMY_DATABASE_URI'] = conexao
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 
 
 login_manager = LoginManager()
