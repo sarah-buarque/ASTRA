@@ -8,8 +8,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 #instala o gunicorn separado
 RUN pip install --no-cache-dir gunicorn
 
-RUN pip install --no-cache-dir cryptografy gunicorn
 COPY . .
 
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
-
