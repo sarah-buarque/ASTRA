@@ -21,11 +21,15 @@ Plataforma de repositório: GitHub
 
 🤝 Equipe do Projeto
 
-Sarah Beatriz Buarque da Silva
+Sarah Beatriz Buarque da Silva (Original)
 
-Vitória Emilly de Brito Nogueira
+Vitória Emilly de Brito Nogueira (Original)
 
-Yasmin da Silva Vitoriano Medeiros
+Yasmin da Silva Vitoriano Medeiros (Original)
+
+Elouise da Costa Galdino (Novo)
+
+Erick Wellington Danstas de Oliveira Gomes (Novo)
 
 📚 Instituição
 
