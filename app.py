@@ -8,21 +8,22 @@ import os
 from flask_migrate import Migrate
 from models import Usuario, Projeto
 
-
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-db_usuario = os.getenv('DB_USERNAME')
-db_senha = os.getenv('DB_PASSWORD')
-db_mydb = os.getenv('DB_DATABASE')
-db_host = os.getenv('DB_HOST')
-db_port = os.getenv('DB_PORT')
 
-conexao = f"mysql+pymysql://{db_usuario}:{db_senha}@{db_host}:{db_port}/{db_mydb}"
-app.config['SQLALCHEMY_DATABASE_URI'] = conexao
+
+app.config['SECRET_KEY'] = 'minha-chave-secreta-123'
+
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+
 db.init_app(app)
+
+
 migrate = Migrate(app, db)
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -30,8 +31,7 @@ login_manager.login_view = "login"
 
 @login_manager.user_loader
 def load_user(user_id):
-    return Usuario.query.get(int(user_id))
-
+    return Usuario.query.get(int(user_id)) 
 
 @app.route("/")
 def home():
@@ -45,14 +45,18 @@ def contato():
 def sobre():
     return render_template("sobre.html")
 
+
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
+
+        nascimento = datetime.strptime(request.form['nascimento'], "%Y-%m-%d").date()
+
         usuario = Usuario(
             perfil=request.form['perfil'],
             nome=request.form['nome'],
             matricula=request.form['matricula'],
-            nascimento=request.form['nascimento'],
+            nascimento=nascimento, 
             email=request.form['email'],
             telefone=request.form['telefone']
         )
@@ -278,6 +282,8 @@ def visualizarprojetos():
     return render_template("visualizarprojetos.html")    
 
 
+with app.app_context():
+    db.create_all()
 
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
