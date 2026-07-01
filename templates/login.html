@@ -15,6 +15,16 @@
             <h2 class="montserrat">Conecte-se</h2>
 
             <div class="form-container inter">
+
+                <!-- LOGIN SUAP -->
+                <a href="{{ url_for('login_suap') }}">
+                    <button type="button">Entrar com SUAP</button>
+                </a>
+
+                <hr>
+
+                <!-- LOGIN ANTIGO DESATIVADO (CASO QUEIRA REATIVAR FUTURAMENTE) -->
+                <!--
                 <form method="POST">
 
                     <div class="campo">
@@ -27,12 +37,9 @@
                         <input type="password" id="senha" name="senha" required>
                     </div>
 
-                    <div class="forgot">
-                        <a href="{{ url_for('recuperar_senha') }}"><b>Esqueceu a senha?</b></a>
-                    </div>
-
                     <button type="submit">Entrar</button>
                 </form>
+                -->
 
                 {% with messages = get_flashed_messages(with_categories=true) %}
                   {% if messages %}
@@ -41,14 +48,15 @@
                     {% endfor %}
                   {% endif %}
                 {% endwith %}
+
                 <div class="signup montserrat">
                     Não tem uma conta?
                     <a href="{{ url_for('cadastro') }}"><b>cadastre-se</b></a>
                 </div>
+
             </div>
 
         </div>
-
 
         <div class="right montserrat">
             <div class="text">
@@ -59,7 +67,5 @@
 
     </div>
 
-    
 </body>
-
 </html>

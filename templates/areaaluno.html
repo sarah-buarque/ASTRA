@@ -5,31 +5,56 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="center-cont">
+
   <div class="box-1">
+
     <div class="profile">
-      <div class="avatar"> <img src="{{ url_for('static', filename='img/user.svg') }}"> </div>
+
+      <div class="avatar">
+
+        {% if usuario.foto %}
+          <img src="{{ usuario.foto }}">
+        {% else %}
+          <img src="{{ url_for('static', filename='img/user.svg') }}">
+        {% endif %}
+
+      </div>
+
       <div class="informacoes">
         <p>Nome: {{ usuario.nome }}</p>
         <p>Matrícula: {{ usuario.matricula }}</p>
         <p>Email: {{ usuario.email }}</p>
         <p>Perfil: {{ usuario.perfil }}</p>
-      </div> <a href="/editarperfil" class="link">Editar Perfil</a>
+      </div>
+
+      <a href="/editarperfil" class="link">Editar Perfil</a>
+
     </div>
+
     <div class="notificacoes">
       <div class="top">
-        <h3>Minhas pendências</h3> <img src="{{ url_for('static', filename='img/Menu.svg') }}" class="listras">
+        <h3>Minhas pendências</h3>
+        <img src="{{ url_for('static', filename='img/Menu.svg') }}" class="listras">
       </div>
+
       <div class="mensagens">
         <p class="mensagem-1"><span class="numero">1</span> <b>Mensagens</b> não lidas</p>
         <p class="mensagem-2"><span class="numero">2</span> <b>Avaliação</b> aguardando avaliação</p>
       </div>
     </div>
+
   </div>
+
   <div class="box-2">
+
     <div class="coluna">
+
       <h1>Meus Projetos</h1>
+
       <div class="projetos">
+
         <div class="projeto-1">
           <img src="{{ url_for('static', filename='img/SemeandoCronicas.svg') }}">
           <div class="proj-texto">
@@ -40,13 +65,20 @@
         </div>
 
       </div>
+
     </div>
+
     <div class="bemvindo">
       <h1>Bem Vindo!</h1>
       <p>Aqui você pode acompanhar projetos, se inscrever em atividades e ficar por dentro das novidades!</p>
       <p>Veja os projetos disponíveis</p>
       <p>Faça sua inscrição</p>
-      <p>Acompanhe suas atividades </p>
-      <p>atualize o seu perfil!</p>
+      <p>Acompanhe suas atividades</p>
+      <p>Atualize o seu perfil!</p>
     </div>
-    {% endblock %}
+
+  </div>
+
+</div>
+
+{% endblock %}

@@ -2,28 +2,71 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastre-se</title>
+    <title>Finalizar Cadastro</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/cadastro.css') }}">
 </head>
+
 <body>
-    <div class="register-container">
-        <h2>Cadastre-se</h2>
-        <form method="POST">
 
-            <select name="perfil" class="perfil-select" required>
-                <option value="aluno">Aluno</option>
-                <option value="servidor">Servidor</option>
+<div class="register-container">
 
-            </select>
+    <h2>Complete seu Cadastro</h2>
 
-            <input type="text" name="nome" required placeholder="Digite seu nome completo">
-            <input type="text" name="matricula" placeholder="Matrícula">
-            <input class="data" type="date" name="nascimento" placeholder="DD/MM/AA" required>
-            <input type="email" name="email" required placeholder="Ex: Digite@seuemail.com">
-            <input type="text" name="telefone" required minlength="11" required maxlength="11" placeholder="Ex: 84999999999">
-            <input type="password" name="senha" required minlength="8" placeholder="Digite sua senha (mín. 8 caracteres)">
-            <button type="submit">Finalizar cadastro</button>
-        </form>
+    {% if suap %}
+    <div class="suap-info">
+
+        <!-- FOTO DO SUAP -->
+        <div class="foto">
+            {% if suap.foto %}
+                <img src="{{ suap.foto }}" width="120" style="border-radius:50%;">
+            {% else %}
+                <img src="{{ url_for('static', filename='img/user.svg') }}" width="120">
+            {% endif %}
+        </div>
+
+        <p><b>Nome:</b> {{ suap.nome }}</p>
+        <p><b>Email:</b> {{ suap.email }}</p>
+        <p><b>Matrícula:</b> {{ suap.matricula }}</p>
+        <p><b>Campus:</b> {{ suap.campus }}</p>
+
     </div>
+    {% endif %}
+
+    <form method="POST">
+
+        <!-- PERFIL ESCOLHIDO PELO USUÁRIO -->
+        <label>Perfil</label>
+        <select name="perfil" required>
+            <option value="aluno">Aluno</option>
+            <option value="servidor">Servidor</option>
+        </select>
+
+        <!-- CAMPOS VINDOS DO SUAP (readonly) -->
+        <input type="text" name="nome"
+               value="{{ suap.nome if suap else '' }}"
+               readonly>
+
+        <input type="text" name="matricula"
+               value="{{ suap.matricula if suap else '' }}"
+               readonly>
+
+        <input type="email" name="email"
+               value="{{ suap.email if suap else '' }}"
+               readonly>
+
+        <!-- CAMPOS QUE O USUÁRIO COMPLETA -->
+        <input type="text" name="telefone"
+               placeholder="Telefone (ex: 84999999999)"
+               required>
+
+        <label>Data de Nascimento</label>
+        <input type="date" name="nascimento" required>
+
+        <button type="submit">Finalizar Cadastro</button>
+
+    </form>
+
+</div>
+
 </body>
 </html>

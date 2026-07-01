@@ -9,9 +9,17 @@
 <div class="center-cont">
 
   <div class="box-1">
+
     <div class="profile">
+
       <div class="avatar">
-        <img src="{{ url_for('static', filename='img/user.svg') }}">
+
+        {% if usuario.foto %}
+          <img src="{{ usuario.foto }}">
+        {% else %}
+          <img src="{{ url_for('static', filename='img/user.svg') }}">
+        {% endif %}
+
       </div>
 
       <div class="informacoes">
@@ -22,6 +30,7 @@
       </div>
 
       <a href="/editarperfil" class="link">Editar Perfil</a>
+
     </div>
 
     <div class="notificacoes">
@@ -35,54 +44,66 @@
         <p class="mensagem-2"><span class="numero">2</span> <b>Avaliação</b> aguardando avaliação</p>
       </div>
     </div>
+
   </div>
 
   <div class="box-2">
 
-      <div class="coluna">
-        <div class="projetos">
-          <h1>Meus Projetos</h1>
-          {% if projetos %}
+    <div class="coluna">
+
+      <div class="projetos">
+
+        <h1>Meus Projetos</h1>
+
+        {% if projetos %}
           {% for projeto in projetos %}
-          <div class="projeto-1">
-            {% if projeto.imagem %}
 
-            <img src="{{ url_for('static', filename=projeto.imagem.split('static/')[1]) }}">
-            {% endif %}
-            <div class="proj-texto">
-              <h2>{{ projeto.nome_projeto }}</h2>
-              <p>{{ projeto.campus }}</p>
-              <span>Projeto de {{ projeto.tipo_projeto }}</span>
+            <div class="projeto-1">
+
+              {% if projeto.imagem %}
+                <img src="{{ url_for('static', filename=projeto.imagem.split('static/')[1]) }}">
+              {% endif %}
+
+              <div class="proj-texto">
+                <h2>{{ projeto.nome_projeto }}</h2>
+                <p>{{ projeto.campus }}</p>
+                <span>Projeto de {{ projeto.tipo_projeto }}</span>
+              </div>
+
+              <a href="/editarprojeto/{{ projeto.id }}" class="link2">Editar</a>
+
             </div>
-            <a href="/editarprojeto/{{ projeto.id }}" class="link2">Editar</a>
-          </div>
+
           {% endfor %}
-          {% else %}
+        {% else %}
           <p>Nenhum projeto cadastrado.</p>
-          {% endif %}
-        </div>
+        {% endif %}
 
+      </div>
 
-        <div class="adicionar">
-          <a href="/criarprojeto"><img src="{{ url_for('static', filename='img/Add.svg') }}"></a>
-          <div class="proj-texto">
-            <h2>Adicionar projeto</h2>
-          </div>
+      <div class="adicionar">
+        <a href="/criarprojeto">
+          <img src="{{ url_for('static', filename='img/Add.svg') }}">
+        </a>
+
+        <div class="proj-texto">
+          <h2>Adicionar projeto</h2>
         </div>
       </div>
 
-
-      <div class="bemvindo">
-        <h1>Bem Vindo!</h1>
-        <p>Aqui você pode acompanhar projetos, se inscrever em atividades e ficar por dentro das novidades!</p>
-        <p>Veja os projetos disponíveis</p>
-        <p>Faça sua inscrição</p>
-        <p>Acompanhe suas atividades </p>
-        <p>atualize o seu perfil!</p>
-      </div>
     </div>
+
+    <div class="bemvindo">
+      <h1>Bem Vindo!</h1>
+      <p>Aqui você pode acompanhar projetos, se inscrever em atividades e ficar por dentro das novidades!</p>
+      <p>Veja os projetos disponíveis</p>
+      <p>Faça sua inscrição</p>
+      <p>Acompanhe suas atividades</p>
+      <p>Atualize o seu perfil!</p>
+    </div>
+
+  </div>
 
 </div>
 
-
-  {% endblock %}
+{% endblock %}

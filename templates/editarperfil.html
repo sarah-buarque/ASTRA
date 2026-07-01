@@ -5,67 +5,56 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="center-content">
 
   <div class="profile-header">
+
     <div class="avatar">
-      <img src="{{ url_for('static', filename='img/user.svg') }}">
-      <b>
-        <span class="edit-text">Editar</span>
-      </b>
+      {% if usuario.foto %}
+        <img src="{{ usuario.foto }}">
+      {% else %}
+        <img src="{{ url_for('static', filename='img/user.svg') }}">
+      {% endif %}
+      <b><span class="edit-text">Editar</span></b>
     </div>
 
     <div class="profile-info">
       <p>Nome: {{ usuario.nome }}</p>
       <p>Matrícula: {{ usuario.matricula }}</p>
-      <p>Email: {{ usuario.email }}r</p>
+      <p>Email: {{ usuario.email }}</p>
       <p>Perfil: {{ usuario.perfil }}</p>
     </div>
+
   </div>
 
   <form class="profile-form" method="POST">
+
     <label>Nome:</label>
-    <input type="text" name="nome" class="form-control" value="{{ usuario.nome }}">
+    <input type="text" name="nome" value="{{ usuario.nome }}">
 
-    <label>Número de Telefone:</label>
-    <input type="text" name="telefone" class="form-control" value="{{ usuario.telefone }}">
+    <label>Telefone:</label>
+    <input type="text" name="telefone" value="{{ usuario.telefone }}">
 
-    <div class="row">
-      <div>
-        <label>Email:</label>
-        <input type="text" name="email" class="form-control" value="{{ usuario.email }}">
-      </div>
+    <label>Data de nascimento:</label>
+    <input type="date" name="nascimento"
+           value="{{ usuario.nascimento.strftime('%Y-%m-%d') if usuario.nascimento else '' }}">
 
-      <div>
-        <label>Matrícula:</label>
-        <input type="text" name="matricula" class="form-control" value="{{ usuario.matricula }}">
-      </div>
-    </div>
+    <button type="submit" class="btn-save">
+      Salvar alterações
+    </button>
 
-    <div class="row">
-      <div>
-        <label>Data de nascimento</label>
-        <input type="date" name="nascimento" class="form-control" value="{{ usuario.nascimento }}">
-      </div>
+  </form>
 
-      <div>
-        <label>Senha:</label>
-        <input type="password" class="form-control">
-      </div>
-    </div>
+  <form action="{{ url_for('excluir_usuario') }}" method="post"
+        onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
 
-    <div class="buttons">
-      <form action="{{ url_for('editarperfil') }}" method="get">
-        <button type="submit" class="btn-save">Editar meus dados</button>
-      </form>
-      <form action="{{ url_for('excluir_usuario') }}" method="post" style="display:inline;">
-        <button type="submit" class="btn-delete"
-          onclick="return confirm('Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.')">
-          Excluir Conta
-        </button>
-      </form>
-    </div>
+    <button type="submit" class="btn-delete">
+      Excluir Conta
+    </button>
+
   </form>
 
 </div>
+
 {% endblock %}
