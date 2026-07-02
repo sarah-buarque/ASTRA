@@ -1,37 +1,50 @@
 {% extends "base2.html" %}
 
+
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/area.css') }}">
 {% endblock %}
 
+
 {% block content %}
+
 
 <div class="center-cont">
 
+
   <div class="box-1">
+
 
     <div class="profile">
 
+
       <div class="avatar">
 
+
         {% if usuario.foto %}
-          <img src="{{ usuario.foto }}">
+        <img src="{{ usuario.foto }}">
         {% else %}
-          <img src="{{ url_for('static', filename='img/user.svg') }}">
+        <img src="{{ url_for('static', filename='img/user.svg') }}">
         {% endif %}
 
+
       </div>
+
 
       <div class="informacoes">
         <p>Nome: {{ usuario.nome }}</p>
         <p>Matrícula: {{ usuario.matricula }}</p>
         <p>Email: {{ usuario.email }}</p>
+        <p>Campus: {{ usuario.campus }}</p>
         <p>Perfil: {{ usuario.perfil }}</p>
       </div>
 
+
       <a href="/editarperfil" class="link">Editar Perfil</a>
 
+
     </div>
+
 
     <div class="notificacoes">
       <div class="top">
@@ -39,59 +52,77 @@
         <img src="{{ url_for('static', filename='img/Menu.svg') }}" class="listras">
       </div>
 
+
       <div class="mensagens">
         <p class="mensagem-1"><span class="numero">1</span> <b>Mensagens</b> não lidas</p>
         <p class="mensagem-2"><span class="numero">2</span> <b>Avaliação</b> aguardando avaliação</p>
       </div>
     </div>
 
+
   </div>
+
 
   <div class="box-2">
 
+
     <div class="coluna">
+
 
       <div class="projetos">
 
+
         <h1>Meus Projetos</h1>
 
+
         {% if projetos %}
-          {% for projeto in projetos %}
+        {% for projeto in projetos %}
 
-            <div class="projeto-1">
 
-              {% if projeto.imagem %}
-                <img src="{{ url_for('static', filename=projeto.imagem.split('static/')[1]) }}">
-              {% endif %}
+        <div class="projeto-1">
 
-              <div class="proj-texto">
-                <h2>{{ projeto.nome_projeto }}</h2>
-                <p>{{ projeto.campus }}</p>
-                <span>Projeto de {{ projeto.tipo_projeto }}</span>
-              </div>
 
-              <a href="/editarprojeto/{{ projeto.id }}" class="link2">Editar</a>
+          {% if projeto.imagem %}
+          <img src="{{ url_for('static', filename=projeto.imagem.split('static/')[1]) }}">
+          {% endif %}
 
-            </div>
 
-          {% endfor %}
+          <div class="proj-texto">
+            <h2>{{ projeto.nome_projeto }}</h2>
+            <p>{{ projeto.campus }}</p>
+            <span>Projeto de {{ projeto.tipo_projeto }}</span>
+          </div>
+
+
+          <a href="/editarprojeto/{{ projeto.id }}" class="link2">Editar</a>
+
+
+        </div>
+
+
+        {% endfor %}
         {% else %}
-          <p>Nenhum projeto cadastrado.</p>
+        <p>Nenhum projeto cadastrado.</p>
         {% endif %}
 
+
       </div>
+
 
       <div class="adicionar">
         <a href="/criarprojeto">
           <img src="{{ url_for('static', filename='img/Add.svg') }}">
         </a>
 
+
         <div class="proj-texto">
           <h2>Adicionar projeto</h2>
         </div>
       </div>
 
+
     </div>
+
 
     <div class="bemvindo">
       <h1>Bem Vindo!</h1>
@@ -102,8 +133,11 @@
       <p>Atualize o seu perfil!</p>
     </div>
 
+
   </div>
 
+
 </div>
+
 
 {% endblock %}

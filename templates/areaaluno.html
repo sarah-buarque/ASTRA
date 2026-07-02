@@ -1,37 +1,50 @@
 {% extends "base2.html" %}
 
+
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/area.css') }}">
 {% endblock %}
 
+
 {% block content %}
+
 
 <div class="center-cont">
 
+
   <div class="box-1">
+
 
     <div class="profile">
 
+
       <div class="avatar">
 
+
         {% if usuario.foto %}
-          <img src="{{ usuario.foto }}">
+        <img src="{{ usuario.foto }}">
         {% else %}
-          <img src="{{ url_for('static', filename='img/user.svg') }}">
+        <img src="{{ url_for('static', filename='img/user.svg') }}">
         {% endif %}
 
+
       </div>
+
 
       <div class="informacoes">
         <p>Nome: {{ usuario.nome }}</p>
         <p>Matrícula: {{ usuario.matricula }}</p>
         <p>Email: {{ usuario.email }}</p>
+        <p>Campus: {{ usuario.campus }}</p>
         <p>Perfil: {{ usuario.perfil }}</p>
       </div>
 
+
       <a href="/editarperfil" class="link">Editar Perfil</a>
 
+
     </div>
+
 
     <div class="notificacoes">
       <div class="top">
@@ -39,21 +52,28 @@
         <img src="{{ url_for('static', filename='img/Menu.svg') }}" class="listras">
       </div>
 
+
       <div class="mensagens">
         <p class="mensagem-1"><span class="numero">1</span> <b>Mensagens</b> não lidas</p>
         <p class="mensagem-2"><span class="numero">2</span> <b>Avaliação</b> aguardando avaliação</p>
       </div>
     </div>
 
+
   </div>
+
 
   <div class="box-2">
 
+
     <div class="coluna">
+
 
       <h1>Meus Projetos</h1>
 
+
       <div class="projetos">
+
 
         <div class="projeto-1">
           <img src="{{ url_for('static', filename='img/SemeandoCronicas.svg') }}">
@@ -64,9 +84,12 @@
           </div>
         </div>
 
+
       </div>
 
+
     </div>
+
 
     <div class="bemvindo">
       <h1>Bem Vindo!</h1>
@@ -77,8 +100,12 @@
       <p>Atualize o seu perfil!</p>
     </div>
 
+
   </div>
+
 
 </div>
 
+
 {% endblock %}
+

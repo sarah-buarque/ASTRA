@@ -46,14 +46,14 @@
 
   </form>
 
-  <form action="{{ url_for('excluir_usuario') }}" method="post"
-        onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
+ <form action="{{ url_for('excluir_usuario') }}" method="post"
+      onsubmit="return confirm('Tem certeza que deseja excluir sua conta?');">
 
-    <button type="submit" class="btn-delete">
+    <button action="{{ url_for('excluir_usuario') }}" type="submit" class="btn-delete">
       Excluir Conta
     </button>
 
-  </form>
+</form>
 
 </div>
 
